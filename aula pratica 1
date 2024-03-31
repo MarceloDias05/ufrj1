@@ -78,6 +78,23 @@ z = float(input('Insira o peso do segundo valor: '))
 
 print(medpond(x, y, w, z))
 
+#exercicio 7:erro de uma aproximação 
+
+def erro_PG_infinita(a, q, n):
+    soma_n = a * (1 - q**n) / (1 - q)
+    soma_infinita = a / (1 - q)
+    erro = abs(soma_infinita - soma_n)
+    return erro
+
+# Exemplo de uso:
+a = 1.0  # primeiro termo
+q = 0.5  # razão da PG
+n = 10   # número de termos
+
+erro = erro_PG_infinita(a, q, n)
+print("Erro entre a soma de uma PG infinita e a soma dos primeiros {} termos: {}".format(n, erro))
+
+
 #exercicio 8: 15% de gorjeta
 
 def gorjeta (c):
@@ -110,17 +127,14 @@ def juros_simples(principal, taxa, tempo):
     montante = principal + juros
     return montante
 
-def main():
-    principal = float(input("Digite o valor principal: "))
-    taxa = float(input("Digite a taxa de juros (em decimal): "))
-    tempo = int(input("Digite o período de tempo: "))
+principal = float(input("Digite o valor principal: "))
+taxa = float(input("Digite a taxa de juros (em decimal): "))
+tempo = int(input("Digite o período de tempo: "))
 
-    resultado = juros_simples(principal, taxa, tempo)
+resultado = juros_simples(principal, taxa, tempo)
     
 print("O montante após {} meses será de: R$ {:.2f}".format(tempo, resultado))
 
-if __name__ == "__main__":
-    main()
 
 # #exercicio 11: barco
 def distancia_correnteza(velocidade_correnteza, largura_rio, velocidade_barco_perpendicular):
