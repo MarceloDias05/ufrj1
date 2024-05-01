@@ -1,0 +1,138 @@
+#1)
+def contar_palavras(frase):
+    # Remover espaços em branco no início e no final da frase
+    frase = frase.strip()
+    # Dividir a frase em palavras usando o espaço como separador
+    palavras = frase.split()
+    # Retornar o número de palavras na frase
+    return len(palavras)
+
+# Exemplo de uso
+frase = "   Esta é uma frase de exemplo   "
+print("Número de palavras na frase:", contar_palavras(frase))
+
+#2)
+def contar_frases(texto):
+    # Inicializa o contador de frases como zero
+    num_frases = 0
+
+    # Percorre todos os caracteres do texto
+    for i in range(len(texto)):
+        # Verifica se o caractere atual é um dos marcadores de fim de frase
+        if texto[i] in ['.', '!', '?']:
+            # Se for ponto final, verifica se não é uma sequência de reticências
+            if texto[i] == '.':
+                # Verifica se não é uma sequência de reticências
+                # O próximo caractere não é um ponto final ou é o último caractere do texto
+                if i == len(texto) - 1 or (i < len(texto) - 1 and texto[i + 1] != '.'):
+                    # Se não é uma sequência de reticências, incrementa o contador de frases
+                    num_frases += 1
+            else:
+                # Se o caractere atual não for um ponto final, incrementa o contador de frases
+                num_frases += 1
+        # Verifica se o caractere atual é uma reticência e se é seguido por espaços ou é o último caractere do texto
+        elif texto[i:i+3] == '...' and (i+3 == len(texto) or texto[i+3] == ' '):
+            # Se é uma reticência seguida por espaços ou é o último caractere do texto, incrementa o contador de frases
+            num_frases += 1
+
+    # Retorna o número total de frases encontrado no texto
+    return num_frases
+# Exemplo de uso
+texto = "Preciso tirar um cochilo... Meus Deus! Que horas são? Vou perder a minha aula..."
+print("Número de frases no texto:", contar_frases(texto))
+
+
+
+#3)
+def remover_pontuacao(frase):
+    # Lista de caracteres de pontuação
+    pontuacao = ['.', ',', ':', ';', '!', '?', '-', '—', '...']
+    # Substituir caracteres de pontuação por espaços
+    for ponto in pontuacao:
+        frase = frase.replace(ponto, ' ')
+    return frase
+
+# Exemplo de uso
+frase = "Esta é uma frase, com pontuação - para testar! Será que funciona?"
+print("Frase sem pontuação:", remover_pontuacao(frase))
+
+
+#4)
+def remover_pontuacao(frase):
+    # Lista de caracteres de pontuação
+    pontuacao = ['.', ',', ':', ';', '!', '?', '-', '—', '...']
+    # Inicializar uma string vazia para armazenar a frase sem pontuação
+    frase_sem_pontuacao = ""
+    # Iterar pelos caracteres da frase
+    for caractere in frase:
+        # Verificar se o caractere não está na lista de pontuação
+        if caractere not in pontuacao:
+            # Se não estiver na lista de pontuação, adicionar o caractere à frase sem pontuação
+            frase_sem_pontuacao += caractere
+        else:
+            # Se estiver na lista de pontuação, adicionar um espaço em branco à frase sem pontuação
+            frase_sem_pontuacao += ' '
+    # Retornar a frase sem pontuação
+    return frase_sem_pontuacao
+
+def frase_invertida(frase):
+    # Remover a pontuação da frase
+    frase_sem_pontuacao = remover_pontuacao(frase)
+    # Dividir a frase em palavras
+    palavras = frase_sem_pontuacao.split()
+    # Inverter a ordem das palavras e converter para minúsculas
+    palavras_invertidas = [palavra.lower() for palavra in reversed(palavras)]
+    # Juntar as palavras em uma nova frase
+    nova_frase = ' '.join(palavras_invertidas)
+    return nova_frase
+
+# Exemplo de uso
+frase = input('Insira a frase: ')
+print("Frase alterada:", frase_invertida(frase))
+
+#5)
+def insere(lista, n):
+    # Adicionar o número à lista
+    lista.append(n)
+    # Ordenar a lista
+    lista.sort()
+
+# Exemplo de uso
+lista = [1, 3, 5, 7, 9]
+n = int(input('Insira o numero que deseja adicionar à lista: '))
+
+insere(lista, n)
+print("Lista após inserção:", lista)
+
+#6)
+def maiores_que(lista, n):
+    # Filtrar os números maiores que n
+    maiores = [num for num in lista if num > n]
+    # Ordenar a lista de números maiores em ordem crescente
+    maiores.sort()
+    return maiores
+
+# Exemplo de uso
+lista_original = [1, 5, 3, 7, 2, 9, 4, 8, 6]
+n = int(input('Insira o numero que deseja adicionar à lista: '))
+
+print("Números maiores que", n, "na lista:", maiores_que(lista_original, n))
+
+#7)
+def maiores_que(lista, n):
+    # Filtrar os números maiores que n
+    maiores = [num for num in lista if num > n]
+    # Ordenar a lista de números maiores em ordem crescente
+    maiores.sort()
+    return maiores
+
+def acima_da_media(notas):
+    # Calcular a média das notas
+    media = sum(notas) / len(notas)
+    # Encontrar as notas acima da média
+    notas_acima_media = maiores_que(notas, media)
+    return notas_acima_media
+
+# Exemplo de uso
+notas = [7, 5, 8, 6, 9, 4, 7, 8, 6, 7]
+print("Notas acima da média:", acima_da_media(notas))
