@@ -1,0 +1,59 @@
+#1) SIGA
+def SIGA(aluno):
+    # Extrai o nome do aluno da tupla
+    nome = aluno[0]
+    
+    # Extrai as notas do aluno da tupla, excluindo o primeiro elemento (nome)
+    notas = aluno[1:]
+    
+    # Calcula a média das notas
+    media = sum(notas) / len(notas)
+    
+    # Verifica a situação do aluno com base na média
+    if media >= 7:
+        # Se a média for maior ou igual a 7, o aluno está aprovado com parabéns
+        return (nome, round(media, 1), 'aprovado', 'Parabéns!')
+    elif media >= 5:
+        # Se a média for maior ou igual a 5, mas menor que 7, o aluno está aprovado
+        return (nome, round(media, 1), 'aprovado')
+    else:
+        # Se a média for menor que 5, o aluno está reprovado
+        return (nome, round(media, 1), 'reprovado')
+
+# Exemplo de uso:
+aluno1 = ('João', 8, 7, 6) 
+aluno2 = ('Maria', 6, 5, 4)
+aluno3 = ('Pedro', 4, 3, 2)
+
+print(SIGA(aluno1))
+print(SIGA(aluno2))
+print(SIGA(aluno3))
+
+
+#2) Quadrantes 
+import math
+
+def quadrante(angulo, graus=True):
+    # Converte o ângulo para radianos se necessário
+    if graus:
+        angulo = math.radians(angulo)
+    
+    # Verifica em qual quadrante o ângulo se encontra
+    if angulo >= 0:
+        if angulo < math.pi / 2:
+            return 1  # Primeiro quadrante
+        elif angulo < math.pi:
+            return 2  # Segundo quadrante
+        else:
+            return 3  # Terceiro quadrante
+    else:
+        if angulo > -math.pi / 2:
+            return 4  # Quarto quadrante
+        elif angulo > -math.pi:
+            return 3  # Terceiro quadrante (limite entre terceiro e quarto quadrante)
+        else:
+            return 2  # Segundo quadrante (limite entre segundo e terceiro quadrante)
+
+# Exemplo de uso:
+print(quadrante(720, True))
+print(quadrante(3.5, False))
