@@ -1,0 +1,54 @@
+#1)    
+def excluir_telefone(info_contato, telefone):
+    # Obtém a lista de telefones do contato
+    lista_telefones = info_contato[1]
+
+    # Verifica se o telefone está na lista de telefones do contato
+    if telefone in lista_telefones:
+        # Remove o telefone da lista de telefones
+        lista_telefones.remove(telefone)
+        # Retorna True indicando que a alteração foi feita com sucesso
+        return True
+    else:
+        # Se o telefone não estiver na lista de telefones do contato, retorna False
+        return False
+
+# Exemplo de uso
+contato = ['Bruno Campos', ['2199112233', '2133992211'], 'brunoc91@emailquente.com.br', '@brunocampos91']
+telefone_a_excluir = '2199112233'
+alteracao_feita = excluir_telefone(contato, telefone_a_excluir)
+
+if alteracao_feita:
+    print("Telefone excluído com sucesso.")
+    print("Novos telefones do contato:", contato[1])
+else:
+    print("O telefone não estava na lista de telefones do contato. Nenhuma alteração foi feita.")
+
+#2)
+
+def informacoes_campeonato(tabela_pontos):
+    # Lista para armazenar os nomes dos times
+    nomes_times = list(tabela_pontos.keys())
+
+    # Pontuação do time campeão (máxima pontuação)
+    pontuacao_campeao = max(tabela_pontos.values())
+
+    # Média de pontos por time
+    total_pontos = sum(tabela_pontos.values())
+    media_pontos = total_pontos / len(nomes_times)
+
+    return nomes_times, pontuacao_campeao, media_pontos
+
+# Exemplo de uso
+tabela_pontos = {
+    'Time A': 20,
+    'Time B': 25,
+    'Time C': 18,
+    'Time D': 22
+}
+
+nomes_times, pontuacao_campeao, media_pontos = informacoes_campeonato(tabela_pontos)
+
+print("Nomes dos times:", nomes_times)
+print("Pontuação do time campeão:", pontuacao_campeao)
+print("Média de pontos por time:", media_pontos)
