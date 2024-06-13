@@ -1,0 +1,105 @@
+#1)filtrar multiplos
+def filtra_multiplos(lista, m): #recebe uma lista e um numero 
+    # Utilizamos uma compreensão de lista para filtrar os elementos que não são múltiplos de m
+    return [num for num in lista if num % m != 0]
+
+# Exemplo de uso da função
+lista_original = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+m = 3
+print(filtra_multiplos(lista_original, m))  # Saída: [1, 2, 4, 5, 7, 8, 10]
+
+
+#2)vogais
+def vogais_maiusculas(frase):
+    # Define as vogais que serão convertidas para maiúsculas
+    vogais = "aeiou"
+    # Inicializa uma string vazia para armazenar a nova frase
+    nova_frase = ""
+    
+    # Itera sobre cada letra na frase de entrada
+    for letra in frase:
+        # Verifica se a letra atual, em minúsculo, está entre as vogais
+        if letra.lower() in vogais:
+            # Se a letra for uma vogal, a converte para maiúscula e a adiciona à nova frase
+            nova_frase += letra.upper()
+        else:
+            # Se não for uma vogal, adiciona a letra à nova frase sem modificação
+            nova_frase += letra
+            
+    # Retorna a nova frase com as vogais em maiúsculas
+    return nova_frase
+
+# Exemplo de uso:
+frase = input("Digite uma frase: ")
+resultado = vogais_maiusculas(frase)
+print("Frase com vogais em maiúsculas:", resultado)    
+
+#3)posPalavra
+
+#4)pares consecutivos
+def paresConsecutivos(lista): #recebe uma lista
+    # Inicializamos o contador de pares consecutivos como 0
+    contador = 0
+    
+    # Percorremos a lista a partir do segundo elemento
+    for i in range(1, len(lista)):
+        # Verificamos se o elemento atual e o anterior são pares e iguais
+        if lista[i] % 2 == 0 and lista[i] == lista[i - 1]:
+            # Se forem, incrementamos o contador
+            contador += 1
+    
+    # Retornamos o número de pares consecutivos encontrados
+    return contador
+
+# Exemplo de uso da função
+lista = [2, 4, 4, 7, 8, 8, 8, 10]
+print(paresConsecutivos(lista))  # Saída: 3
+
+#5)soma 
+def soma_ate_numero(numero):
+    # Calcula a soma utilizando a fórmula da soma de uma progressão aritmética
+    soma = (numero * (numero + 1)) // 2
+    return soma
+
+# Exemplo de uso da função
+numero = 10
+print(soma_ate_numero(numero))  # Saída: 55 (1 + 2 + 3 + 4 + 5 + 6 + 7 + 8 + 9 + 10 = 55)
+
+#6)contas (obi)
+def conta_faltando(contas): #recebe uma lista
+    # Calcula a soma esperada de todos os números de 1 a N
+    soma_esperada = sum(range(1, len(contas) + 2))
+    
+    # Calcula a soma real dos números fornecidos
+    soma_real = sum(contas)
+    
+    # A diferença entre a soma esperada e a soma real será o número faltando
+    return soma_esperada - soma_real
+
+# Exemplo de uso da função
+contas = [1, 2, 3, 5, 6, 7, 8, 9, 10]
+print(conta_faltando(contas))  # Saída: 4 (pois a conta 4 está faltando)
+
+#7)lista reversa
+def inverte_lista(lista): #recebe uma lista
+    # Use slicing para inverter a lista
+    lista_nova = lista[::-1]
+    return lista_nova
+
+# Exemplo de uso da função
+numeros = [1, 2, 3, 4, 5]
+print(inverte_lista(numeros))  # Saída: [5, 4, 3, 2, 1]
+
+#8) palavra invertida
+def inverte_ordem_palavras(frase):
+    # Divida a frase em palavras
+    palavras = frase.split()
+    # Inverta a ordem da lista de palavras
+    palavras_invertidas = palavras[::-1]
+    # Junte as palavras invertidas em uma frase novamente
+    frase_invertida = ' '.join(palavras_invertidas)
+    return frase_invertida
+
+# Exemplo de uso da função
+frase = "Esta é uma frase de exemplo"
+print(inverte_ordem_palavras(frase))  # Saída: "exemplo de frase uma é Esta"
