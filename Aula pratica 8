@@ -1,0 +1,168 @@
+#1)
+def eh_simetrica(matriz):
+    # Verifica se a matriz é quadrada
+    if len(matriz) != len(matriz[0]):
+        return False
+    
+    # Percorre a matriz e compara os elementos com seus correspondentes através da diagonal principal
+    for i in range(len(matriz)):
+        for j in range(len(matriz[0])):
+            # Verifica se os elementos são diferentes de seus correspondentes pela diagonal principal
+            if matriz[i][j] != matriz[j][i]:
+                return False
+    
+    # Se nenhum elemento diferente foi encontrado, a matriz é simétrica
+    return True
+
+# Exemplo de uso da função
+matriz_simetrica = [
+    [1, 2, 3],
+    [2, 4, 5],
+    [3, 5, 6]
+]
+
+matriz_nao_simetrica = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+print(eh_simetrica(matriz_simetrica))       # Saída: True
+print(eh_simetrica(matriz_nao_simetrica))   # Saída: False
+
+#2)
+def conta_pares(matriz):
+    # Inicializa o contador de números pares como zero
+    contador_pares = 0
+    
+    # Percorre cada linha da matriz
+    for linha in matriz:
+        # Percorre cada elemento na linha
+        for elemento in linha:
+            # Verifica se o elemento é par
+            if elemento % 2 == 0:
+                # Se for par, incrementa o contador de números pares
+                contador_pares += 1
+    
+    return contador_pares
+
+# Exemplo de uso da função
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+print(conta_pares(matriz))  # Saída: 4 (2, 4, 6, 8 são pares)
+
+#3)
+def media_coluna(matriz, coluna):
+    # Inicializa a soma dos elementos da coluna como zero
+    soma_coluna = 0
+    
+    # Percorre cada linha da matriz
+    for linha in matriz:
+        # Adiciona o elemento da coluna desejada à soma
+        soma_coluna += linha[coluna]
+    
+    # Calcula a média da coluna
+    media = soma_coluna / len(matriz)
+    
+    # Retorna a média com duas casas decimais de precisão
+    return round(media, 2)
+
+# Exemplo de uso da função
+matriz = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+coluna = 1  # Vamos calcular a média da segunda coluna (índice 1)
+
+print(media_coluna(matriz, coluna))  # Saída: 5.0 (a média da segunda coluna é 5.0)
+
+#4)
+def pior_volta(matriz_tempos):
+    # Inicializa o tempo da pior volta como zero
+    pior_tempo = 0
+    # Inicializa o corredor da pior volta como None
+    corredor_pior_volta = None
+    # Inicializa o número da volta da pior volta como zero
+    volta_pior_volta = 0
+    
+    # Percorre cada linha da matriz (representando cada corredor)
+    for corredor, tempos in enumerate(matriz_tempos):
+        # Encontra o pior tempo de volta para o corredor atual
+        pior_tempo_corredor = max(tempos)
+        
+        # Verifica se o tempo dessa volta é pior do que o atual
+        if pior_tempo_corredor > pior_tempo:
+            # Se for, atualiza as informações da pior volta
+            pior_tempo = pior_tempo_corredor
+            corredor_pior_volta = corredor + 1  # Adicionamos 1 porque a enumeração começa em zero
+            volta_pior_volta = tempos.index(pior_tempo_corredor) + 1  # Adicionamos 1 porque a indexação começa em zero
+    
+    return (corredor_pior_volta, pior_tempo, volta_pior_volta)
+
+# Exemplo de uso da função
+matriz_tempos = [
+    [30, 32, 31, 35, 33, 36, 34, 31, 30, 33],
+    [28, 29, 30, 31, 32, 30, 29, 28, 27, 28],
+    [33, 34, 35, 36, 34, 33, 32, 31, 30, 29],
+    [31, 32, 33, 34, 33, 32, 31, 30, 29, 28],
+    [29, 30, 31, 32, 30, 29, 28, 27, 26, 25],
+    [27, 28, 29, 30, 29, 28, 27, 26, 25, 24]
+]
+
+resultado = pior_volta(matriz_tempos)
+print("Pior volta da prova:")
+print("Corredor:", resultado[0])
+print("Tempo:", resultado[1])
+print("Volta:", resultado[2])
+
+#5)
+def diagonal_principal(matriz):
+    # Inicializa a lista para armazenar os elementos da diagonal principal
+    diagonal = []
+    
+    # Percorre a matriz
+    for i in range(len(matriz)):
+        # Adiciona o elemento da diagonal principal à lista
+        diagonal.append(matriz[i][i])
+    
+    return diagonal
+
+# Exemplo de uso da função
+matriz_quadrada = [
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9]
+]
+
+print(diagonal_principal(matriz_quadrada))  # Saída: [1, 5, 9]
+
+#6)
+def transpor_matriz(matriz):
+    # Determina o número de linhas e colunas na matriz original
+    m = len(matriz)  # número de linhas
+    n = len(matriz[0])  # número de colunas
+    
+    # Inicializa a matriz transposta como uma lista de listas vazias
+    matriz_transposta = [[] for _ in range(n)]
+    
+    # Preenche a matriz transposta com os elementos da matriz original
+    for i in range(m):
+        for j in range(n):
+            matriz_transposta[j].append(matriz[i][j])
+    
+    return matriz_transposta
+
+# Exemplo de uso da função
+matriz_original = [
+    [1, 2, 3],
+    [4, 5, 6]
+]
+
+print(transpor_matriz(matriz_original))  
+# Saída: [[1, 4], [2, 5], [3, 6]]
+
