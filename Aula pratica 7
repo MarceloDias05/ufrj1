@@ -1,0 +1,185 @@
+#1)
+def freq_caracteres(string):
+    # Inicializa um dicionário vazio para armazenar a contagem de cada caractere
+    frequencia = {}
+    
+    # Percorre cada caractere na string
+    for char in string:
+        # Se o caractere já estiver no dicionário, incrementa a contagem
+        # Caso contrário, inicializa a contagem como 1
+        if char in frequencia:
+            frequencia[char] += 1
+        else:
+            frequencia[char] = 1
+    
+    return frequencia
+
+# Exemplo de uso da função
+resultado = freq_caracteres("banana")
+print(resultado)  # Saída: {'b': 1, 'a': 3, 'n': 2}
+
+#2)
+def calcula_total(itens_a_comprar, produtos):
+    # Inicializa o total como 0
+    total = 0
+    
+    # Percorre cada item na lista de itens a comprar
+    for item in itens_a_comprar:
+        # Verifica se o item está disponível no dicionário de produtos
+        if item in produtos:
+            # Se estiver, adiciona o preço do item ao total
+            total += produtos[item]
+    
+    return total
+
+# Exemplo de uso da função
+itens_a_comprar = ['maçã', 'banana', 'leite']
+produtos = {
+    'maçã': 1.50,
+    'banana': 0.50,
+    'leite': 3.00,
+    'pão': 2.00
+}
+
+print(calcula_total(itens_a_comprar, produtos))  # Saída: 5.0
+
+#3)
+
+def lingua_q(palavra):
+    # Definimos as vogais da língua portuguesa
+    vogais = 'aeiouAEIOU'
+    
+    # Inicializamos a palavra traduzida como uma string vazia
+    palavra_traduzida = ''
+    
+    # Iteramos sobre cada caractere na palavra fornecida
+    for letra in palavra:
+        # Verificamos se o caractere é uma vogal (ignorando maiúsculas e minúsculas)
+        if letra not in vogais:
+            # Se não for uma vogal, adicionamos "q" seguido do próprio caractere traduzido para minúsculo
+            palavra_traduzida += 'q' + letra.lower()
+        else:
+            # Se for uma vogal, apenas adicionamos o caractere à palavra traduzida
+            palavra_traduzida += letra.lower()
+    
+    return palavra_traduzida
+
+# Exemplos de uso da função
+print(lingua_q("exemplo"))  # Saída: eqxemqploq
+print(lingua_q("então"))    # Saída: eqntq~aqoq
+print(lingua_q("Caderno"))  # Saída: cqadqedqerqnqoq
+
+#4)
+def conta_divisores(numero):
+    # Inicializa o contador de divisores como 0
+    contador = 0
+    # Inicializa a soma dos divisores como 0
+    soma_divisores = 0
+    
+    # Percorre os números de 1 até o próprio número
+    for i in range(1, numero + 1):
+        # Verifica se i é divisor de número
+        if numero % i == 0:
+            # Se for, incrementa o contador de divisores
+            contador += 1
+            # Adiciona i à soma dos divisores
+            soma_divisores += i
+    
+    # Retorna a quantidade de divisores e a soma dos divisores
+    return contador, soma_divisores
+
+# Exemplo de uso da função
+numero = 18
+quantidade_divisores, soma_divisores = conta_divisores(numero)
+print("Total de divisores:", quantidade_divisores)
+print("Soma dos divisores:", soma_divisores)
+print("Soma dos divisores é igual ao número?", soma_divisores == numero)
+
+#5)
+import math
+
+def numero_primo(numero):
+    # Verifica se o número é menor ou igual a 1
+    if numero <= 1:
+        return False
+    
+    # Percorre os números de 2 até a raiz quadrada do número
+    for i in range(2, int(math.sqrt(numero)) + 1):
+        # Se encontrar um divisor, o número não é primo
+        if numero % i == 0:
+            return False
+    
+    # Se nenhum divisor foi encontrado, o número é primo
+    return True
+
+# Exemplo de uso da função
+numero = 17
+print(numero_primo(numero))  # Saída: True
+
+#6)
+def soma_alternada(N):
+    # Inicializa a soma como zero
+    soma = 0
+    # Inicializa o sinal como positivo
+    sinal = 1
+    
+    # Itera de 1 até N
+    for i in range(1, N + 1):
+        # Calcula o termo da série alternada e adiciona à soma
+        soma += sinal * 1/i
+        # Alterna o sinal para o próximo termo
+        sinal *= -1
+    
+    return soma
+
+# Exemplo de uso da função
+N = 5
+print(soma_alternada(N))  # Saída: 0.7833333333333332
+
+#7)
+def contar_elemento(iteravel, elem):
+    # Inicializa o contador como zero
+    contador = 0
+    
+    # Percorre cada elemento no iterável
+    for item in iteravel:
+        # Verifica se o elemento é igual ao elemento fornecido
+        if item == elem:
+            # Se for igual, incrementa o contador
+            contador += 1
+    
+    return contador
+
+# Exemplo de uso da função
+iteravel = [1, 2, 3, 4, 2, 2, 5]
+elem = 2
+print(contar_elemento(iteravel, elem))  # Saída: 3
+
+#8)
+def contar_elemento_no_intervalo(iteravel, elem, ini, fim):
+    # Inicializa o contador como zero
+    contador = 0
+    
+    # Verifica se o índice ini é válido
+    if ini < 0:
+        ini = 0
+    
+    # Verifica se o índice fim é válido e ajusta para não ultrapassar o comprimento do iterável
+    if fim > len(iteravel):
+        fim = len(iteravel)
+    
+    # Percorre cada elemento no intervalo [ini, fim)
+    for i in range(ini, fim):
+        # Verifica se o elemento é igual ao elemento fornecido
+        if iteravel[i] == elem:
+            # Se for igual, incrementa o contador
+            contador += 1
+    
+    return contador
+
+# Exemplo de uso da função
+iteravel = [1, 2, 3, 4, 2, 2, 5]
+elem = 2
+ini = 1
+fim = 5
+print(contar_elemento_no_intervalo(iteravel, elem, ini, fim))  # Saída: 2
